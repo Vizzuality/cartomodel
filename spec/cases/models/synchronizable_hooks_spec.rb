@@ -3,17 +3,16 @@ require 'spec_helper'
 describe "Cartomodel::Model::Synchronizable" do
   before(:each) do
     @query_generator = spy(Cartomodel::QueryGenerator)
+    @api_endpoint = spy(Cartowrap::API)
 
     @instance = ArTestClass.new()
-    @instance.cartodb_table = 'foo'
+    @instance.instance_variable_set(:@cartodb_table, 'foo')
     @instance.instance_variable_set(:@query_generator, @query_generator)
+    @instance.instance_variable_set(:@api_endpoint, @api_endpoint)
     @instance.save
   end
   it "generates INSERT query for CartoDB" do
     expected_insert_args = {
-        "id" => nil,
-        "cartodb_id" => nil,
-        "sync_state" => nil,
         "f_binary" => nil,
         "f_boolean" => nil,
         "f_date" => nil,
@@ -34,9 +33,6 @@ describe "Cartomodel::Model::Synchronizable" do
     @instance.save
 
     expected_update_args = {
-        "id" => 2,
-        "cartodb_id" => nil,
-        "sync_state" => nil,
         "f_binary" => nil,
         "f_boolean" => nil,
         "f_date" => nil,

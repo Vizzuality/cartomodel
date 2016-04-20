@@ -7,7 +7,7 @@ describe "Cartomodel::QueryGenerator" do
         'blue' => '0x0000ff'
     }
 
-    expect(Cartomodel::QueryGenerator.new('foo').insert(colors)).to eq('INSERT INTO "foo" ("red", "blue") VALUES (\'0xff0000\', \'0x0000ff\')')
+    expect(Cartomodel::QueryGenerator.new('foo').insert(colors)).to eq('INSERT INTO "foo" ("red", "blue") VALUES (\'0xff0000\', \'0x0000ff\') RETURNING cartodb_id')
   end
 
   it "can generate simple updates" do

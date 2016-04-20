@@ -32,11 +32,11 @@ module Cartomodel
         query = @query_generator.insert(attributes)
         begin
           response = @api_endpoint.send_query(query)
-          json = ActiveSupport::JSON.decode(response)
-          self.cartodb_id = json['rows'].first['cartodb_id']
-          self.sync_state = STATE_SYNCED
+          # json = ActiveSupport::JSON.decode(response)
+          # self.cartodb_id = json['rows'].first['cartodb_id']
+          # self.sync_state = STATE_SYNCED
         rescue
-          self.sync_state = STATE_FAILED
+          # self.sync_state = STATE_FAILED
         end
       end
 

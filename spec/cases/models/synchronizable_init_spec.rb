@@ -31,7 +31,7 @@ describe "Cartomodel::Model::Synchronizable" do
     instance = ArTestClass.new()
     expect { instance.save }.to raise_error(RuntimeError, 'CartoDB table name not defined')
 
-    instance.cartodb_table = 'foo'
+    instance.instance_variable_set(:@cartodb_table, 'foo')
     expect { instance.save }.to_not raise_error()
   end
 end
