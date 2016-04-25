@@ -19,10 +19,17 @@ ActiveRecord::Schema.define do
     t.timestamp   :f_timestamp
   end
 
-  create_table :no_attr_ar_test_classes, :force => true do |t|
+  create_table :no_attr_ar_test_classes, :force => true do |t| end
+  create_table :tableless_test_classes, :force => true do |t|
+    t.integer :cartodb_id
+    t.integer :sync_state
   end
 end
 
 class ArTestClass < ActiveRecord::Base
   include Cartomodel::Model::Synchronizable
+
+  def cartodb_table
+    'foo'
+  end
 end

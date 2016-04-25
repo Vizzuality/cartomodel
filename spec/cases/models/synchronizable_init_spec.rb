@@ -28,10 +28,16 @@ describe "Cartomodel::Model::Synchronizable" do
   end
 
   it "requires CartoDB table name" do
-    instance = ArTestClass.new()
+    class TablelessTestClass < ActiveRecord::Base
+      include Cartomodel::Model::Synchronizable
+    end
+
+    instance = TablelessTestClass.new()
     expect { instance.save }.to raise_error(RuntimeError, 'CartoDB table name not defined')
 
-    instance.instance_variable_set(:@cartodb_table, 'foo')
+    instance.define_singleton_method(:cartodb_table) do
+      "foo"
+    end
     expect { instance.save }.to_not raise_error()
   end
 end
