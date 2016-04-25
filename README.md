@@ -17,7 +17,7 @@ You must manually configure your CartoDB account, create the table and ensure th
 
 Once that is done, configure your local model like so:
 
-´´´
+```
 class YourModelClass < ApplicationRecord
   include Cartomodel::Model::Synchronizable
 
@@ -25,15 +25,15 @@ class YourModelClass < ApplicationRecord
     'indicator_config'
   end
 end
-´´´
+```
 
 Make sure that your model has the two following columns:
 
-´´´
+```
 class AddCartomodelColumnsYourModel < ActiveRecord::Migration
   def change
     add_column :indicator_configs, :cartodb_id, :integer
     add_column :indicator_configs, :sync_state, :integer
   end
 end
-´´´
+```
