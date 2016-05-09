@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.license      = "MIT"
 
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  s.files = Dir["{app,config,db,lib,tasks}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   s.require_paths  = ["lib"]
 
   s.add_development_dependency "rspec", "~> 3.0"
