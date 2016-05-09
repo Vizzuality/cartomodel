@@ -35,10 +35,15 @@ describe "Cartomodel::Model::Synchronizable" do
     instance = TablelessTestClass.new()
     expect { instance.save }.to raise_error(RuntimeError, 'CartoDB table name not defined')
 
+    expect(Cartowrap).to receive(:make_request)
+
     instance.define_singleton_method(:cartodb_table) do
       "foo"
     end
     expect { instance.save }.to_not raise_error()
+
+    TablelessTestClass.reset_callbacks(:destroy)
+    instance.destroy
   end
 end
 

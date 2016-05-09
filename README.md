@@ -37,3 +37,13 @@ class AddCartomodelColumnsYourModel < ActiveRecord::Migration
   end
 end
 ```
+
+# Sync
+
+If CartoDB, for some reason, fails to save your data, you can retry later using a rake task:
+
+```
+rake cartomodel:sync
+```
+
+Currently the task prints no output on progress or success

@@ -9,6 +9,9 @@ describe "Cartomodel::Model::Synchronizable" do
     @instance.instance_variable_set(:@api_endpoint, @api_endpoint)
     @instance.save
   end
+  after(:each) do
+    @instance.destroy
+  end
   it "sends INSERT query for CartoDB" do
     expected_insert_query = "INSERT INTO \"foo\" (\"f_binary\", \"f_boolean\", \"f_date\", \"f_datetime\", \"f_decimal\", \"f_float\", \"f_integer\", \"f_references_id\", \"f_string\", \"f_text\", \"f_time\", \"f_timestamp\") VALUES (NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL) RETURNING cartodb_id"
 

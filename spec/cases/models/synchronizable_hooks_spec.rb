@@ -11,6 +11,9 @@ describe "Cartomodel::Model::Synchronizable" do
     @instance.instance_variable_set(:@api_endpoint, @api_endpoint)
     @instance.save
   end
+  after(:each) do
+    @instance.destroy
+  end
   it "generates INSERT query for CartoDB" do
     expected_insert_args = {
         "f_binary" => nil,

@@ -2,6 +2,7 @@ module Cartomodel
   module Model
     module Synchronizable
       extend ActiveSupport::Concern
+      extend ActiveSupport::DescendantsTracker
 
       STATE_UNSYNCED = 0
       STATE_SYNCED = 1
