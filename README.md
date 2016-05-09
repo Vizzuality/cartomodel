@@ -46,4 +46,11 @@ If CartoDB, for some reason, fails to save your data, you can retry later using 
 rake cartomodel:sync
 ```
 
+To use this task, you need to add the following to your Rakefile:
+
+```
+spec = Gem::Specification.find_by_name 'cartomodel'
+load "#{spec.gem_dir}/tasks/sync.rake"
+```
+
 Currently the task prints no output on progress or success
