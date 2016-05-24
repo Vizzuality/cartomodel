@@ -61,7 +61,7 @@ module Cartomodel
           raise RuntimeError.new('Cartomodel::Synchronizable can only extend ActiveRecord instances')
         end
 
-        unless base.new.attributes.include? 'cartodb_id' and base.new.attributes.include? 'sync_state'
+        unless base.column_names.include? 'cartodb_id' and base.column_names.include? 'sync_state'
           raise RuntimeError.new('Cartomodel::Synchronizable requires \'cartodb_id\' and \'sync_state\' attributes')
         end
 
