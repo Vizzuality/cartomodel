@@ -23,8 +23,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rake"
 
-  s.add_runtime_dependency "activesupport", ">= 5.0.0.beta3"
-  s.add_runtime_dependency "activerecord", ">= 5.0.0.beta3"
+  s.add_runtime_dependency "activesupport", "~> 5.0"
+  s.add_runtime_dependency "activerecord", "~> 5.0"
   s.add_runtime_dependency "arel", "~> 7.0"
   s.add_runtime_dependency "cartowrap"
 end
