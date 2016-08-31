@@ -19,6 +19,7 @@ module Cartomodel
         self.sync_state == STATE_UNSYNCED
 
         attributes = prepare_attributes
+        attributes = custom_cartodb_attributes attributes
 
         query = @query_generator.insert(attributes)
         begin
@@ -37,6 +38,7 @@ module Cartomodel
         self.sync_state == STATE_UNSYNCED
 
         attributes = prepare_attributes
+        attributes = custom_cartodb_attributes attributes
 
         query = @query_generator.update(attributes, :cartodb_id, self.cartodb_id)
         begin
@@ -72,6 +74,10 @@ module Cartomodel
         base.before_create :create_on_cartodb
         base.before_update :update_on_cartodb
         base.before_destroy :delete_on_cartodb
+      end
+
+      def custom_cartodb_attributes(attributes)
+        attributes
       end
 
       private
