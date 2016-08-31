@@ -54,3 +54,19 @@ load "#{spec.gem_dir}/tasks/sync.rake"
 ```
 
 Currently the task prints no output on progress or success
+
+# Custom attributes
+
+If you want to have special attributes synced to Carto, use the following:
+
+```
+class YourModelClass < ApplicationRecord
+  include Cartomodel::Model::Synchronizable
+
+  def custom_cartodb_attributes(attributes)
+    attributes['custom_attribute'] = 'custom_value'
+    attributes
+  end
+end
+
+```
